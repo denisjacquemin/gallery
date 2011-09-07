@@ -1,0 +1,20 @@
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @item.description %>
+</p>
+
+<%= @item.assets.each do |asset| %>
+    
+  <div class="field">
+    <%= link_to image_tag(asset.asset.url(:thumb)), asset.asset.url(:large) %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

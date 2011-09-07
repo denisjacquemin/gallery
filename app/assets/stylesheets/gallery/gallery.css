@@ -1,0 +1,38 @@
+html { overflow-y: scroll; }
+
+header h1 {
+    float:left;
+}
+header nav#main-menu {
+    position: relative;
+    text-align: right;
+    float:left;
+    margin: 0 0 0 20px;
+}
+
+header nav#second-menu {
+    position: relative;
+    text-align: right;
+    float:right;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+#filters {
+    background: #ddd;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+#iso-filters li {
+    display: inline;
+}
+
+.item {
+    height: 200px;
+    width: 198px;
+    margin: 0 35px 35px 0;
+    background: #eee;
+}

@@ -1,0 +1,34 @@
+<div id="filters" class="sixteen columns">
+  <ul id="iso-filters">
+    <li><a href="#" data-filter="*">show all</a></li>
+    <li><a href="#" data-filter=".metal">metal</a></li>
+    <li><a href="#" data-filter=".transition">transition</a></li>
+    <li><a href="#" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</a></li>
+    <li><a href="#" data-filter=":not(.transition)">not transition</a></li>
+    <li><a href="#" data-filter=".metal:not(.transition)">metal but not transition</a></li>
+    </ul>
+</div>
+<div id="gallery" class="sixteen columns">
+        <% for @items.each do |item|  %>
+          <div class="item"><%= image_tag(item.assets[0].object.asset.url(:thumb)) %></div>
+        <% end %>
+</div>
+
+<%= javascript_tag do %>
+  
+  $(function(){    
+      $('#gallery').isotope({
+        // options
+        itemSelector : '.item',
+        layoutMode : 'fitRows',
+        filter: '.metal'
+      });
+
+      $('#iso-filters a').click(function(){
+        var selector = $(this).attr('data-filter');
+        $('#gallery ').isotope({ filter: selector });
+        return false;
+      });
+  });
+  
+<% end %>

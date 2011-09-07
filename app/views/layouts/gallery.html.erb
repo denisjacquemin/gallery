@@ -1,0 +1,51 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>Home</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />   
+  <%= stylesheet_link_tag    "gallery" %>
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />  
+</head>
+<body>
+  <div class="container">
+      <header class="sixteen columns">
+         <h1><%= link_to t('gallery.header.site_title'), root_path %></h1>
+         <nav id="main-menu">
+             <ul>
+                 <li><%= link_to t('gallery.header.about'), about_path %></li>
+                 <li><%= link_to t('gallery.header.contact'), contact_path %></li>
+             </ul>
+         </nav>
+         <nav id="second-menu">
+               <ul>
+                   <li><a href="#">menu 1</a></li>
+                   <li><a href="#">menu 2</a></li>
+               </ul>
+         </nav>
+      </header>
+      <div data-pjax-container>
+      <%= yield %>
+      </div>
+      <hr />
+      <footer class="sixteen columns">
+      
+      footer
+      </footer>
+  </div>
+  <%= javascript_include_tag "gallery" %>
+  
+</body>
+</html>
