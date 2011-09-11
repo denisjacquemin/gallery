@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Description</th>
     <th></th>
@@ -11,6 +12,7 @@
 
 <% @items.each do |item| %>
   <tr>
+    <td><%= image_tag(item.assets[0].asset.url(:thumb)) %>
     <td><%= item.name %></td>
     <td><%= item.description %></td>
     <td><%= link_to 'Show', item %></td>
