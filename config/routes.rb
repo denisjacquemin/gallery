@@ -11,8 +11,6 @@ GalleryAdmin::Application.routes.draw do
   resources :sessions
 
   resources :users
-
-  resources :companies
   
   match 'contact' => 'gallery#contact'
   match 'about' => 'gallery#about'
