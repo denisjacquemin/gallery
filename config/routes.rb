@@ -1,5 +1,7 @@
 GalleryAdmin::Application.routes.draw do
 
+  resources :agencies
+
   resources :items
 
   get "dashboard/index"
