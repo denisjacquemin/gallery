@@ -1,16 +1,14 @@
-<% content_for :breadcrumb do %>
-  <ul id="breadcrumb">
-    <li><%= link_to t('admin.general.Dashboard'), admin_root_path %></li>
-    <li><%= link_to t('admin.general.Agencies_Listing'), agencies_path %></li>
-    <li class="last"><%= t('admin.general.Details') %></li>
-    
-  </ul>
-<% end %>
-<h1>Editing agency</h1>
+<ul id="breadcrumb">
+  <li><%= link_to t('admin.general.Dashboard'), admin_root_path %></li>
+  <li><%= link_to t('admin.general.Agencies_Listing'), agencies_path %></li>
+  <li class="last"><%= t('admin.general.Details') %></li>
+</ul>
+<div id="maincol">
+  <h1>Editing agency</h1>
+  <%= render 'form' %>
+</div>
 
-<%= render 'form' %>
-
-<% content_for :subcol do %>
+<div id="subcol">
   <div class="notice">
     <h4>Managing Users</h4> 
     <p>Add new user users for <%= @agency.name %></p>
@@ -19,7 +17,7 @@
       <% if @invitation.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
-
+  
           <ul>
           <% @invitation.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -35,7 +33,4 @@
     <h4>Pending Invitation(s)</h4>
     <ul id="pending-invitations"></ul>
   </div>
-<% end %>
-
-<%= link_to 'Show', @agency %> |
-<%= link_to 'Back', agencies_path %>
+</div>
