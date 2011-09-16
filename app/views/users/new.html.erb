@@ -13,13 +13,14 @@
     <% end %>
   <% end %>
   
-<% if params[:u].nil? %>  
+<% if @user.email.nil? %>  
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email %>
   </div>
 <% else %>
-  <%= hidden_field_tag :u, params[:u] %>
+  <%= f.hidden_field :email %>
+  <%= hidden_field_tag :hash, @invitation.hash %>
 <% end %>  
   
   <div class="field">

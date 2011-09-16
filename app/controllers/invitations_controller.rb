@@ -25,7 +25,7 @@ class InvitationsController < ApplicationController
   # GET /invitations/new.json
   def new
     @invitation = Invitation.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @invitation }
@@ -41,9 +41,11 @@ class InvitationsController < ApplicationController
   # POST /invitations.json
   def create
     @invitation = Invitation.new(params[:invitation])
-
+    @invitation.hash = User.all.count # unique hash key id
     respond_to do |format|
       if @invitation.save
+        # send invitation email
+        InvitationMailer.invitation_to_signup(@invitation).deliver
         format.html { redirect_to @invitation, notice: 'Invitation was successfully created.' }
         format.json { render json: @invitation, status: :created, location: @invitation }
       else

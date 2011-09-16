@@ -13,15 +13,27 @@
 <% content_for :subcol do %>
   <div class="notice">
     <h4>Managing Users</h4> 
-    <p>Add new user users for current <%= @agency.name %></p>
-    <p>Adding a new email address will send an invitation to signup.</p>
-    <%= form_for(@user, :remote => true) do |f| %>
-      <%= hidden_field_tag 'user[agency_id]', @agency.id %>
-      <%= f.text_field :email %><%= f.submit :value => 'Invite'%>
+    <p>Add new user users for <%= @agency.name %></p>
+    <p>Adding a new email address will and send an invitation to signup by email.</p>
+    <%= form_for(@invitation, :format => :json, :remote => true) do |f| %>
+      <% if @invitation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+
+          <ul>
+          <% @invitation.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :hash %>
+      <%= f.hidden_field :agency_id %>
+      <%= f.email_field :email %>
+      <%= f.submit :disable_with => t('admin.general.Sending'), :value => t('admin.general.Invite') %>
     <% end %>
-    <ul>
-      <li>denis.jacquemin@gmail.com</li>
-    </ul>
+    <h4>Pending Invitation(s)</h4>
+    <ul id="pending-invitations"></ul>
   </div>
 <% end %>
 

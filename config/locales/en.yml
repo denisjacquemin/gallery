@@ -8,10 +8,12 @@ en:
       about: About
       contact: Contact
   email:
-    signup_admin_user_email:
-      subject: Welcome admin user
+    invitation_to_signup:
+      subject: Invitation to signup
   admin:
     general:
       Dashboard: Dashboard
       Agencies_Listing: Agencies Listing
       Details: Details
+      Invite: Send Invitation
+      Sending: Sending...

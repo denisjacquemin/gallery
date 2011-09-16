@@ -40,8 +40,8 @@ class AgenciesController < ApplicationController
   # GET /agencies/1/edit
   def edit
     @agency = Agency.find(params[:id])
-    @user = User.new
-    @users = User.by_agency(@agency.id)
+    @invitation = Invitation.new
+    @invitation.agency_id = @agency.id
   end
 
   # POST /agencies
@@ -71,6 +71,8 @@ class AgenciesController < ApplicationController
         format.html { redirect_to @agency, notice: 'Agency was successfully updated.' }
         format.json { head :ok }
       else
+        @invitation = Invitation.new
+        @invitation.agency_id = @agency.id
         format.html { render action: "edit" }
         format.json { render json: @agency.errors, status: :unprocessable_entity }
       end
