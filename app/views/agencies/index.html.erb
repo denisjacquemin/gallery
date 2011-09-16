@@ -1,33 +1,37 @@
+<% content_for :breadcrumb do %>
+  <ul id="breadcrumb">
+    <li><%= link_to t('admin.general.Dashboard'), admin_root_path %></li>
+    <li class="last"><%= t('admin.general.Agencies_Listing') %></li>
+  </ul>
+<% end %>
+
 <h1>Listing agencies</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Tel</th>
-    <th>Email</th>
-    <th>Hostname</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="leftpan">
+<%= link_to 'New Agency', new_agency_path, :class => 'button' %>
+</div>
+<div class="rightpan">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Tel</th>
+      <th>Email</th>
+      <th>Hostname</th>
+      <th></th>
+    </tr>
+  
+  <% @agencies.each do |agency| %>
+    <tr>
+      <td><%= link_to agency.name, edit_agency_path(agency) %></td>
+      <td><%= link_to agency.address, edit_agency_path(agency) %></td>
+      <td><%= link_to agency.tel, edit_agency_path(agency) %></td>
+      <td><%= link_to agency.email, edit_agency_path(agency) %></td>
+      <td><%= link_to agency.hostname, edit_agency_path(agency) %></td>
+      <td><%= link_to 'Destroy', agency, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+<span class="clear"></span>
 
-<% @agencies.each do |agency| %>
-  <tr>
-    <td><%= agency.name %></td>
-    <td><%= agency.address %></td>
-    <td><%= agency.tel %></td>
-    <td><%= agency.email %></td>
-    <td><%= agency.hostname %></td>
-    <td><%= agency.user_id %></td>
-    <td><%= link_to 'Show', agency %></td>
-    <td><%= link_to 'Edit', edit_agency_path(agency) %></td>
-    <td><%= link_to 'Destroy', agency, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Agency', new_agency_path %>

@@ -40,6 +40,8 @@ class AgenciesController < ApplicationController
   # GET /agencies/1/edit
   def edit
     @agency = Agency.find(params[:id])
+    @user = User.new
+    @users = User.by_agency(@agency.id)
   end
 
   # POST /agencies
@@ -49,9 +51,6 @@ class AgenciesController < ApplicationController
 
     respond_to do |format|
       if @agency.save
-        
-        admin_user_email = params[:user_email]
-        User.new(:email => admin_user_email)
         
         format.html { redirect_to @agency, notice: 'Agency was successfully created.' }
         format.json { render json: @agency, status: :created, location: @agency }
@@ -88,5 +87,9 @@ class AgenciesController < ApplicationController
       format.html { redirect_to agencies_url }
       format.json { head :ok }
     end
+  end
+  
+  def new_user
+    @user = User.new(:hash => 1)
   end
 end

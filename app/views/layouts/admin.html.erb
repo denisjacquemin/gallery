@@ -36,6 +36,7 @@
     <h1>Title</h1>
   </header>
   <div id="container">
+    <%= yield(:breadcrumb) %>
     <div id="maincol" data-pjax-container>
       <%= yield %>
     </div>

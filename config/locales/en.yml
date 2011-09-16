@@ -7,3 +7,11 @@ en:
       site_title: Title
       about: About
       contact: Contact
+  email:
+    signup_admin_user_email:
+      subject: Welcome admin user
+  admin:
+    general:
+      Dashboard: Dashboard
+      Agencies_Listing: Agencies Listing
+      Details: Details

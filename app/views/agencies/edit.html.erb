@@ -1,6 +1,29 @@
+<% content_for :breadcrumb do %>
+  <ul id="breadcrumb">
+    <li><%= link_to t('admin.general.Dashboard'), admin_root_path %></li>
+    <li><%= link_to t('admin.general.Agencies_Listing'), agencies_path %></li>
+    <li class="last"><%= t('admin.general.Details') %></li>
+    
+  </ul>
+<% end %>
 <h1>Editing agency</h1>
 
 <%= render 'form' %>
+
+<% content_for :subcol do %>
+  <div class="notice">
+    <h4>Managing Users</h4> 
+    <p>Add new user users for current <%= @agency.name %></p>
+    <p>Adding a new email address will send an invitation to signup.</p>
+    <%= form_for(@user, :remote => true) do |f| %>
+      <%= hidden_field_tag 'user[agency_id]', @agency.id %>
+      <%= f.text_field :email %><%= f.submit :value => 'Invite'%>
+    <% end %>
+    <ul>
+      <li>denis.jacquemin@gmail.com</li>
+    </ul>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @agency %> |
 <%= link_to 'Back', agencies_path %>
