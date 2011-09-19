@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $('#new_invitation').live('ajax:success', (xhr, data, status) ->
-  $('input#invitation_email').empty() ## doesn't works
+  $('input#invitation_email').val('').focus()
   $('ul#pending-invitations').html('<li>'+data.email+' | ' + data.created_at + '</li>') ## highlight!
 )
